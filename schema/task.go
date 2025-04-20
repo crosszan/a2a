@@ -10,4 +10,19 @@ type Task struct {
 }
 
 type TaskStatus struct {
+	State     TaskState `json:"state"`
+	Message   *Message  `json:"message,omitempty"`
+	Timestamp *string   `json:"timestamp,omitempty"`
 }
+
+type TaskState string
+
+const (
+	TaskStateSubmitted     TaskState = "submitted"
+	TaskStateWorking       TaskState = "working"
+	TaskStateInputRequired TaskState = "input_required"
+	TaskStateCompleted     TaskState = "completed"
+	TaskStateCancelled     TaskState = "cancelled"
+	TaskStateFailed        TaskState = "failed"
+	TaskStateUnknown       TaskState = "unknown"
+)
